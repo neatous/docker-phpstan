@@ -1,0 +1,17 @@
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:neatous/phpstan-collections.git"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "phpstan/phpstan": "^2.1",
+    "phpstan/phpstan-nette": "^2.0",
+    "phpstan/phpstan-doctrine": "^2.0",
+    "phpstan/phpstan-phpunit": "^2.0",
+    "phpstan/phpstan-deprecation-rules": "^2.0",
+    "bonami/phpstan-collections": "dev-master"
+  }
+}
