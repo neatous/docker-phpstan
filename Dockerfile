@@ -21,6 +21,7 @@ ENV PATH /composer/vendor/bin:$PATH
 RUN composer global require phpstan/phpstan --prefer-dist \
 && composer global require phpstan/phpstan-nette --prefer-dist \
 && composer global require phpstan/phpstan-doctrine --prefer-dist \
+&& composer global require phpstan/phpstan-phpunit --prefer-dist \
 && composer global show | grep phpstan
 
 VOLUME ["/var/www/html/"]
