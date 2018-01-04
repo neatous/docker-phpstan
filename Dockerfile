@@ -27,4 +27,4 @@ RUN composer global require phpstan/phpstan --prefer-dist \
 VOLUME ["/var/www/html/"]
 WORKDIR /var/www/html/
 
-ENTRYPOINT ["phpstan"]
+ENTRYPOINT ["/bin/sh"]
