@@ -19,6 +19,7 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 ENV PATH /composer/vendor/bin:$PATH
 
 RUN composer global require phpstan/phpstan --prefer-dist \
+&& composer global require phpstan/phpstan-strict-rules --prefer-dist \
 && composer global require phpstan/phpstan-nette --prefer-dist \
 && composer global require phpstan/phpstan-doctrine --prefer-dist \
 && composer global require phpstan/phpstan-phpunit --prefer-dist \
