@@ -1,4 +1,4 @@
-ROM php:7.2-alpine
+FROM php:7.2-alpine
 MAINTAINER Martin Venuš <martin.venus@neatous.cz>
 
 RUN apk update --no-cache \
