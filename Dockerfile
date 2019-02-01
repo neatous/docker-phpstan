@@ -29,6 +29,7 @@ RUN apt-get update && apt-get install -y \
 	&& docker-php-ext-install -j$(nproc) gd \
 	&& docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
 	&& docker-php-ext-install -j$(nproc) pdo pdo_pgsql pgsql \
+	&& docker-php-ext-install -j$(nproc) soap \
 	&& pecl install redis-4.2.0 \
     && docker-php-ext-enable redis \
     && pecl install vips \
