@@ -7,7 +7,7 @@ ENV TERM xterm
 RUN mkdir /usr/share/man/man1/ /usr/share/man/man7/
 
 RUN apt-get update && apt-get install -y \
-		curl \
+        curl \
         libc-client2007e-dev \
         libcurl4-gnutls-dev \
         libfreetype6-dev \
@@ -49,6 +49,8 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
   && php -r "unlink('/tmp/composer-setup.sig');"
 
 ENV PATH /composer/vendor/bin:$PATH
+
+RUN composer global require nette/utils:^2.4.5
 
 RUN composer global require phpstan/phpstan --prefer-dist \
 && composer global require phpstan/phpstan-nette --prefer-dist \
