@@ -52,10 +52,10 @@ ENV PATH /composer/vendor/bin:$PATH
 
 RUN composer global require nette/utils:^2.4.5
 
-RUN composer global require phpstan/phpstan --prefer-dist \
-&& composer global require phpstan/phpstan-nette --prefer-dist \
-&& composer global require phpstan/phpstan-doctrine --prefer-dist \
-&& composer global require phpstan/phpstan-phpunit --prefer-dist \
+RUN composer global require phpstan/phpstan "0.11.*" --prefer-dist \
+&& composer global require phpstan/phpstan-nette "0.11.*" --prefer-dist \
+&& composer global require phpstan/phpstan-doctrine "0.11.*" --prefer-dist \
+&& composer global require phpstan/phpstan-phpunit "0.11.*" --prefer-dist \
 && composer global show | grep phpstan
 
 VOLUME ["/var/www/html/"]
