@@ -1,40 +1,5 @@
-FROM php:7.3-fpm
+FROM neatous/phpbase
 MAINTAINER Martin Venuš <martin.venus@neatous.cz>
-
-ENV TERM xterm
-
-# apt does not create these directories automatically during posgresql-client installation
-RUN mkdir /usr/share/man/man1/ /usr/share/man/man7/
-
-RUN apt-get update && apt-get install -y \
-        curl \
-        libc-client2007e-dev \
-        libcurl4-gnutls-dev \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libpng-dev \
-        libxml2-dev \
-        libpq-dev \
-        libvips-dev \
-        libzip-dev \
-        locales \
-        locales-all \
-        postgresql-client \
-        tar \
-        wget \
-    && docker-php-ext-install -j$(nproc) opcache bcmath curl json mbstring zip \
-	&& docker-php-ext-configure xml --with-libxml-dir=/usr/include/ \
-	&& docker-php-ext-install -j$(nproc) xml \
-	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-	&& docker-php-ext-install -j$(nproc) gd \
-	&& docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
-	&& docker-php-ext-install -j$(nproc) pdo pdo_pgsql pgsql \
-	&& docker-php-ext-install -j$(nproc) soap \
-	&& pecl install redis-4.3.0 \
-    && docker-php-ext-enable redis \
-    && pecl install vips \
-    && docker-php-ext-enable vips \
-    && docker-php-ext-install sockets
 
 ENV COMPOSER_HOME /composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
@@ -57,8 +22,5 @@ RUN composer global require phpstan/phpstan "0.11.*" --prefer-dist \
 && composer global require phpstan/phpstan-doctrine "0.11.*" --prefer-dist \
 && composer global require phpstan/phpstan-phpunit "0.11.*" --prefer-dist \
 && composer global show | grep phpstan
-
-VOLUME ["/var/www/html/"]
-WORKDIR /var/www/html/
 
 ENTRYPOINT ["phpstan"]
