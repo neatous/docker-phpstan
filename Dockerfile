@@ -1,4 +1,4 @@
-FROM neatous/phpbase
+FROM neatous/phpbase:8.0
 MAINTAINER Martin Venuš <martin.venus@neatous.cz>
 
 ENV COMPOSER_HOME /composer
