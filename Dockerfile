@@ -24,6 +24,7 @@ RUN composer global require phpstan/phpstan --prefer-dist \
     && composer global require phpstan/phpstan-doctrine --prefer-dist \
     && composer global require phpstan/phpstan-phpunit --prefer-dist \
     && composer global require phpstan/phpstan-deprecation-rules --prefer-dist \
+    && composer global require bonami/phpstan-collections \
     && composer global show | grep phpstan
 
 ENTRYPOINT ["phpstan"]
